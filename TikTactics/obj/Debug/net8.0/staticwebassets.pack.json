@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "/home/spielmeister/Documents/tiktactics/TikTactics/wwwroot/js/signalr/dist/browser/signalr.js",
+      "PackagePath": "staticwebassets/js/signalr/dist/browser/signalr.js"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.TikTactics.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.TikTactics.props",
+      "PackagePath": "build\\TikTactics.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.TikTactics.props",
+      "PackagePath": "buildMultiTargeting\\TikTactics.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.TikTactics.props",
+      "PackagePath": "buildTransitive\\TikTactics.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

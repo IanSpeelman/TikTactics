@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "WEu70cW6AsHo7T00dyz108XxSp2v3T5ar21+1zVNXpc=",
+  "Source": "TikTactics",
+  "BasePath": "_content/TikTactics",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TikTactics/wwwroot",
+      "Source": "TikTactics",
+      "ContentRoot": "/home/spielmeister/Documents/tiktactics/TikTactics/wwwroot/",
+      "BasePath": "_content/TikTactics",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/spielmeister/Documents/tiktactics/TikTactics/wwwroot/js/signalr/dist/browser/signalr.js",
+      "SourceId": "TikTactics",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/spielmeister/Documents/tiktactics/TikTactics/wwwroot/",
+      "BasePath": "_content/TikTactics",
+      "RelativePath": "js/signalr/dist/browser/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/signalr/dist/browser/signalr.js"
+    }
+  ]
+}
