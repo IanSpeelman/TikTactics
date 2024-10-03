@@ -33,3 +33,4 @@
 /home/spielmeister/Documents/tiktactics/TikTactics/obj/Debug/net8.0/TikTactics.pdb
 /home/spielmeister/Documents/tiktactics/TikTactics/obj/Debug/net8.0/TikTactics.genruntimeconfig.cache
 /home/spielmeister/Documents/tiktactics/TikTactics/obj/Debug/net8.0/ref/TikTactics.dll
+/home/spielmeister/Documents/tiktactics/TikTactics/obj/Debug/net8.0/TikTactics.sourcelink.json
