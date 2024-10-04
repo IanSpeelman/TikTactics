@@ -1,5 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Rubik+Mono+One&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root{
+    --black-100: #090909;
+
+    --white-5: rgba(255,255,255,0.05);
+    --white-15: rgba(255,255,255,0.15);
+    --white-75: rgba(255,255,255,0.75);
+
+    --border-radius: 16px; 
+}
+
+
+body{
+    background-color: var(--black-100);
+}
+
+h1{
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--white-75);
+}
+
+p, input, button, label{
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--white-75);
 }

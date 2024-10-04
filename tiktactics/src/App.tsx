@@ -1,12 +1,18 @@
-import { useEffect, useState, useRef } from "react"
-import * as signalR from '@microsoft/signalr';
-import { v4 as uuidv4 } from 'uuid'
+import Title from "./Components/Title";
+import styles from './App.module.css'
+import RoomSelector from "./Components/RoomSelector";
+import { useState } from "react";
+import Game from "./Components/Game";
 
 
 function App() {
-
+    const [roomName, setRoomName] = useState<string | null>(null)
     return (
-        <><h1>Tik-Tactics</h1></>
+        <div className={styles.container}>
+            <Title />
+            {!roomName && <RoomSelector setRoomName={setRoomName} />}
+            {roomName && <Game roomName={roomName} />}
+        </div>
     )
 }
 
