@@ -1,0 +1,15 @@
+.boardcontainer{
+    padding: 0px;
+    background-color: var(--white-75);
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    gap: 4px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 64px;
+}
