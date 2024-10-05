@@ -14,33 +14,35 @@ namespace TikTactics.Hubs
                 {
                     group.Value.Remove(Context.ConnectionId);
                     await Groups.RemoveFromGroupAsync(Context.ConnectionId, group.Key);
-                    await Clients.Group(group.Key).SendAsync("Disconnect", "A user has disconnected");
+                    await Clients.Group(group.Key).SendAsync("Disconnect", new { message = "", players = ExistingGroups[group.Key].Count });
                 }
             }
-            await Clients.All.SendAsync("Disconnect", "A user has disconnected");
         }
 
         public async Task SetGameSession(string room)
         {
+            string player = "o";
             if (!ExistingGroups.ContainsKey(room))
             {
                 ExistingGroups[room] = new List<string>();
+                player = "x";
+
             }
 
             if (ExistingGroups[room].Count >= 2)
             {
-                await Clients.Caller.SendAsync("RoomFull", "this room is full, choose another room");
+                await Clients.Caller.SendAsync("RoomFull", new { message = "Room is full, choose another room" });
                 return;
             }
 
             ExistingGroups[room].Add(Context.ConnectionId);
-
             await Groups.AddToGroupAsync(Context.ConnectionId, room);
-            await Clients.Group(room).SendAsync("Joined", "A new player has joined this session");
+
+            await Clients.Caller.SendAsync("Joined", new { message = "", player = player, turn = "x" });
+            await Clients.Group(room).SendAsync("PlayerJoined", new { message = "", players = ExistingGroups[room].Count });
         }
 
 
     }
-
 }
 

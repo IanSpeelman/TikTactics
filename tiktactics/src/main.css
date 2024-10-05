@@ -21,7 +21,7 @@ body{
     background-color: var(--black-100);
 }
 
-h1{
+h1, h2{
     font-family: "Rubik Mono One", monospace;
     font-weight: 400;
     font-style: normal;

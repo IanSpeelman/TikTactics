@@ -1,14 +1,21 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Position from "./components/Position"
 import styles from './index.module.css'
+import { SocketResponseObject } from "../../utils/types"
+import InfoModal from "../InfoModal"
 
 type GameProps = {
     roomName: string
+    response: SocketResponseObject | null
+    players: number
 }
 
-export default function Game({ roomName }: GameProps) {
-    const player = "x"
-    const turn = "x";
+export default function Game({ roomName, response, players }: GameProps) {
+
+    const [message, setMessage] = useState("")
+    const [started, setStarted] = useState(false)
+    const player = response?.player
+    const turn = response?.turn;
     const [board, setBoard] = useState<string[][]>([
         ["", "", ""],
         ["", "", ""],
@@ -19,14 +26,31 @@ export default function Game({ roomName }: GameProps) {
         const pos = position.split(":")
         const updatedBoard = [...board]
         if (!updatedBoard[+pos[0]][+pos[1]] && player == turn) {
-            updatedBoard[+pos[0]][+pos[1]] = turn;
+            updatedBoard[+pos[0]][+pos[1]] = turn!;
             setBoard(updatedBoard)
         }
     }
 
+    useEffect(() => {
+        console.log(players)
+        if (players < 2) {
+            if (started) {
+                setMessage("Opponent left!")
+            }
+            else {
+                setMessage("Waiting for opponent!")
+            }
+        }
+        else {
+            setMessage("");
+            setStarted(true)
+        }
+    }, [players, started])
+
 
     return (
         <div>
+            {message && <InfoModal message={message} clearMessage={null} />}
             <div className={styles.top}>
                 <p><i>playing in room:</i> <b>{roomName}</b></p>
                 <p><i>you are:</i> <b>{player}</b></p>
