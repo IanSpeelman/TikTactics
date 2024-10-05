@@ -20,7 +20,7 @@ export default function RoomSelector({ setRoomName }: RoomSelectorProps) {
         <form className={styles.container} onSubmit={handleSubmit}>
             <div className={styles.inputgroup}>
                 <label htmlFor="room">Room Name:</label>
-                <input className={styles.input} value={room} onChange={(e) => setRoom(e.target.value)} id='room' type='text' placeholder='Enter Room Name:' />
+                <input className={styles.input} value={room} onChange={(e) => setRoom(e.target.value)} id='room' type='text' placeholder='Enter Room Name:' autoComplete='off' />
             </div>
             <button className={styles.button}>Join</button>
         </form>

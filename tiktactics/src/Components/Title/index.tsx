@@ -1,3 +1,4 @@
+import styles from './index.module.css'
 export default function Title() {
-    return <h1>Tik-Tactics</h1>
+    return <h1 className={styles.title}>Tik-Tactics</h1>
 }
