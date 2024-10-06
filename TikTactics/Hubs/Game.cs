@@ -1,20 +1,37 @@
 using Microsoft.AspNetCore.SignalR;
+using TikTactics.Models;
+
 
 namespace TikTactics.Hubs
 {
     public class GameHub : Hub
     {
-        private static Dictionary<string, List<string>> ExistingGroups = new();
+
+        private static Dictionary<string, Game> GameList = new();
+
         public override async Task OnDisconnectedAsync(Exception? exeption)
         {
-            foreach (var group in ExistingGroups)
+            foreach (var game in GameList)
             {
-                Console.WriteLine(group.Key);
-                if (group.Value.Contains(Context.ConnectionId))
+                if (game.Value.players.Where(player => player.id == Context.ConnectionId).Any())
                 {
-                    group.Value.Remove(Context.ConnectionId);
-                    await Groups.RemoveFromGroupAsync(Context.ConnectionId, group.Key);
-                    await Clients.Group(group.Key).SendAsync("Disconnect", new { message = "", players = ExistingGroups[group.Key].Count });
+                    for (int i = 0; i < GameList[game.Key].players.Count; i++)
+                    {
+                        if (GameList[game.Key].players[i].id == Context.ConnectionId)
+                        {
+                            GameList[game.Key].players.Remove(GameList[game.Key].players[i]);
+                        }
+                    }
+
+                    await Groups.RemoveFromGroupAsync(Context.ConnectionId, game.Key);
+                    await Clients.Group(game.Key).SendAsync("Disconnect", new { message = "", players = GameList[game.Key].players.Count });
+
+                    if (GameList.ContainsKey(game.Key))
+                    {
+                        GameList.Remove(game.Key);
+                    }
+
+
                 }
             }
         }
@@ -22,24 +39,29 @@ namespace TikTactics.Hubs
         public async Task SetGameSession(string room)
         {
             string player = "o";
-            if (!ExistingGroups.ContainsKey(room))
+            if (!GameList.ContainsKey(room))
             {
-                ExistingGroups[room] = new List<string>();
+                GameList[room] = new Game();
                 player = "x";
-
             }
 
-            if (ExistingGroups[room].Count >= 2)
+
+            if (GameList[room].players.Count >= 2)
             {
                 await Clients.Caller.SendAsync("RoomFull", new { message = "Room is full, choose another room" });
                 return;
             }
 
-            ExistingGroups[room].Add(Context.ConnectionId);
+            Player newPlayer = new Player()
+            {
+                id = Context.ConnectionId,
+                character = player,
+            };
+            GameList[room].players.Add(newPlayer);
             await Groups.AddToGroupAsync(Context.ConnectionId, room);
 
             await Clients.Caller.SendAsync("Joined", new { message = "", player = player, turn = "x" });
-            await Clients.Group(room).SendAsync("PlayerJoined", new { message = "", players = ExistingGroups[room].Count });
+            await Clients.Group(room).SendAsync("PlayerJoined", new { message = "", players = GameList[room].players.Count, board = GameList[room].board, turn = GameList[room].turn });
         }
 
 
