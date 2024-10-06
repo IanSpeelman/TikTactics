@@ -8,5 +8,12 @@
     width: 64px;
     top: 64px;
     right: 64px;
+}
 
+@media screen and (max-width: 600px){
+    .container{
+    bottom: 16px;
+    right: 16px;
+    top: inherit;
+    }
 }

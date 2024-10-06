@@ -1,15 +1,20 @@
+import { SetStateAction } from 'react'
 import styles from './index.module.css'
 
 type BackProps = {
     setRoomName: (arg0: string) => void
     killConnection: () => void
+    setStarted: React.Dispatch<SetStateAction<boolean>>
+    setPlayers: React.Dispatch<SetStateAction<number>>
 }
 
-export default function Back({ setRoomName, killConnection }: BackProps) {
+export default function Back({ setRoomName, killConnection, setStarted, setPlayers }: BackProps) {
 
     function handleClick() {
         setRoomName("")
         killConnection();
+        setStarted(false)
+        setPlayers(0)
     }
 
 

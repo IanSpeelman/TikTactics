@@ -13,3 +13,19 @@
     justify-content: space-evenly;
     margin: 64px;
 }
+
+
+@media screen and (max-width: 500px){
+    .boardcontainer{
+    grid-template-columns: 120px 120px 120px;
+    grid-template-rows: 120px 120px 120px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .boardcontainer{
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    }
+}
+

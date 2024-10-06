@@ -2,14 +2,15 @@ import styles from './Position.module.css'
 
 type PositionProps = {
     state: string
-    setBoard: (arg0: string) => void
     position: string
+    makeMove: (arg0: string) => void
 }
 
 
-export default function Position({ state, setBoard, position }: PositionProps) {
+export default function Position({ state = "", position, makeMove }: PositionProps) {
     function handleClick() {
-        setBoard(position)
+        makeMove(position)
+
     }
     return (
         <div className={styles.position} onClick={handleClick}>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TikTactics")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff52f238037c96e4de9faaad31394ae4e4017a27")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36577aacb755a8c9965a30fb2e29504482d94c55")]
 [assembly: System.Reflection.AssemblyProductAttribute("TikTactics")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TikTactics")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

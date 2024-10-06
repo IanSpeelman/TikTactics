@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, SetStateAction } from "react"
 import Position from "./components/Position"
 import styles from './index.module.css'
 import { SocketResponseObject } from "../../utils/types"
@@ -8,13 +8,18 @@ type GameProps = {
     roomName: string
     response: SocketResponseObject | null
     players: number
+    playerInfo: SocketResponseObject | null
+    makeMove: (arg0: string) => void
+    reset?: () => void | null
+    started: boolean
+    setStarted: React.Dispatch<SetStateAction<boolean>>
 }
 
-export default function Game({ roomName, response, players }: GameProps) {
+export default function Game({ started, setStarted, roomName, response, players, playerInfo, makeMove, reset }: GameProps) {
 
     const [message, setMessage] = useState("")
-    const [started, setStarted] = useState(false)
-    const player = response?.player
+    const [winner, setWinner] = useState("")
+    const player = playerInfo?.player
     const turn = response?.turn;
     const [board, setBoard] = useState<string[][]>([
         ["", "", ""],
@@ -22,17 +27,11 @@ export default function Game({ roomName, response, players }: GameProps) {
         ["", "", ""]
     ])
 
-    function changeBoard(position: string) {
-        const pos = position.split(":")
-        const updatedBoard = [...board]
-        if (!updatedBoard[+pos[0]][+pos[1]] && player == turn) {
-            updatedBoard[+pos[0]][+pos[1]] = turn!;
-            setBoard(updatedBoard)
-        }
-    }
-
     useEffect(() => {
-        console.log(players)
+        if (response?.board) {
+            setBoard(response?.board)
+        }
+
         if (players < 2) {
             if (started) {
                 setMessage("Opponent left!")
@@ -45,27 +44,36 @@ export default function Game({ roomName, response, players }: GameProps) {
             setMessage("");
             setStarted(true)
         }
-    }, [players, started])
+
+        if (response?.winner) {
+            setWinner(response.winner)
+            setMessage(`${response.winner} has won this round`)
+            if (response.winner == "done") {
+                setMessage("Its a tie!")
+            }
+        }
+    }, [players, started, response, setStarted])
 
 
     return (
         <div>
-            {message && <InfoModal message={message} clearMessage={null} />}
+            {message && winner && <InfoModal message={message} clearMessage={setWinner} button="play again" buttonAction={reset} />}
+            {message && winner == "" && <InfoModal message={message} clearMessage={null} />}
             <div className={styles.top}>
                 <p><i>playing in room:</i> <b>{roomName}</b></p>
                 <p><i>you are:</i> <b>{player}</b></p>
                 <p><b>{turn}</b> <i>is to play</i></p>
             </div>
             <div className={styles.boardcontainer}>
-                <Position state={board[0][0]} setBoard={changeBoard} position="0:0" />
-                <Position state={board[0][1]} setBoard={changeBoard} position="0:1" />
-                <Position state={board[0][2]} setBoard={changeBoard} position="0:2" />
-                <Position state={board[1][0]} setBoard={changeBoard} position="1:0" />
-                <Position state={board[1][1]} setBoard={changeBoard} position="1:1" />
-                <Position state={board[1][2]} setBoard={changeBoard} position="1:2" />
-                <Position state={board[2][0]} setBoard={changeBoard} position="2:0" />
-                <Position state={board[2][1]} setBoard={changeBoard} position="2:1" />
-                <Position state={board[2][2]} setBoard={changeBoard} position="2:2" />
+                <Position state={board[0][0]} position="0:0" makeMove={makeMove} />
+                <Position state={board[0][1]} position="0:1" makeMove={makeMove} />
+                <Position state={board[0][2]} position="0:2" makeMove={makeMove} />
+                <Position state={board[1][0]} position="1:0" makeMove={makeMove} />
+                <Position state={board[1][1]} position="1:1" makeMove={makeMove} />
+                <Position state={board[1][2]} position="1:2" makeMove={makeMove} />
+                <Position state={board[2][0]} position="2:0" makeMove={makeMove} />
+                <Position state={board[2][1]} position="2:1" makeMove={makeMove} />
+                <Position state={board[2][2]} position="2:2" makeMove={makeMove} />
             </div>
         </div>
     )
