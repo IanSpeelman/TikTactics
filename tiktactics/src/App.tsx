@@ -21,7 +21,7 @@ function App() {
     useEffect(() => {
         if (roomName) {
             connection.current = new signalR.HubConnectionBuilder()
-                .withUrl("http://192.168.8.150:5224/TikTactics")
+                .withUrl(import.meta.env.VITE_WS_URL)
                 .build()
 
             connection.current.start()
