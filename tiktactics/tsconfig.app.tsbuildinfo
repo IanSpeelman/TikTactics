@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/Components/Back/index.tsx","./src/Components/Game/index.tsx","./src/Components/Game/components/Position.tsx","./src/Components/InfoModal/index.tsx","./src/Components/RoomSelector/index.tsx","./src/Components/Title/index.tsx","./src/utils/types.ts"],"version":"5.6.2"}

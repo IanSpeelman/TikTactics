@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/spielmeister/Documents/tiktactics/TikTactics/TikTactics.csproj": {}
+    "/home/ian/TikTactics/TikTactics/TikTactics.csproj": {}
   },
   "projects": {
-    "/home/spielmeister/Documents/tiktactics/TikTactics/TikTactics.csproj": {
+    "/home/ian/TikTactics/TikTactics/TikTactics.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/spielmeister/Documents/tiktactics/TikTactics/TikTactics.csproj",
+        "projectUniqueName": "/home/ian/TikTactics/TikTactics/TikTactics.csproj",
         "projectName": "TikTactics",
-        "projectPath": "/home/spielmeister/Documents/tiktactics/TikTactics/TikTactics.csproj",
-        "packagesPath": "/home/spielmeister/.nuget/packages/",
-        "outputPath": "/home/spielmeister/Documents/tiktactics/TikTactics/obj/",
+        "projectPath": "/home/ian/TikTactics/TikTactics/TikTactics.csproj",
+        "packagesPath": "/home/ian/.nuget/packages/",
+        "outputPath": "/home/ian/TikTactics/TikTactics/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/spielmeister/.nuget/NuGet/NuGet.Config"
+          "/home/ian/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -71,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/spielmeister/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

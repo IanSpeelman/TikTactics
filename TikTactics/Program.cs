@@ -7,7 +7,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "all",
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:5173", "http://192.168.8.150:5173");
+                          policy.WithOrigins("https://tiktactics.ianspeelman.com", "https://tiktactics.172.234.99.188");
                           policy.AllowCredentials();
                           policy.AllowAnyHeader();
                           policy.AllowAnyMethod();
