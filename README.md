@@ -8,7 +8,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Live Demo](#live-demo)
-- [License](#license)
 
 ## Project Overview
 
@@ -69,4 +68,4 @@ Once the project is installed and running:
 
 ## Live Demo
 
-A live demo will be available soon!
+A live demo is available [here!](https://tiktactics.ianspeelman.com)
